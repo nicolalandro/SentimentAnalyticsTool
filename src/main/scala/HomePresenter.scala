@@ -7,7 +7,19 @@ class HomePresenter(mAreaChart:AreaChart[Number,Number]) {
 
   mAreaChart.setTitle("Iteration Mood")
 
-  def moodFace(event: ActionEvent) = {
+  def moodFace0(event: ActionEvent) = {
+    println("yeeeee")
+  }
+  def moodFace1(event: ActionEvent) = {
+    println("yeeeee")
+  }
+  def moodFace2(event: ActionEvent) = {
+    println("yeeeee")
+  }
+  def moodFace3(event: ActionEvent) = {
+    println("yeeeee")
+  }
+  def moodFace4(event: ActionEvent) = {
     println("yeeeee")
   }
 }

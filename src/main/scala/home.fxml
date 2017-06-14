@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePresenter">
+<AnchorPane prefHeight="554.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HomePresenter">
    <children>
       <Label alignment="CENTER" contentDisplay="RIGHT" text="Sentiment Tool Analytics" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -21,47 +21,47 @@
       </Label>
       <HBox alignment="CENTER" layoutY="52.0" spacing="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#moodFace">
+            <Button mnemonicParsing="false" onAction="#moodFace0">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image_icon/sentimentMid.png" />
+                        <Image url="@../../../image_icon/0.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace">
+            <Button mnemonicParsing="false" onAction="#moodFace1">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image_icon/sentimentMid.png" />
+                        <Image url="@../../../image_icon/1.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace">
+            <Button mnemonicParsing="false" onAction="#moodFace2">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image_icon/sentimentMid.png" />
+                        <Image url="@../../../image_icon/2.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace">
+            <Button mnemonicParsing="false" onAction="#moodFace3">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image_icon/sentimentMid.png" />
+                        <Image url="@../../../image_icon/3.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace">
+            <Button mnemonicParsing="false" onAction="#moodFace4">
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../image_icon/sentimentMid.png" />
+                        <Image url="@../../../image_icon/4.png" />
                      </image>
                   </ImageView>
                </graphic>
