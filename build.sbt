@@ -2,7 +2,7 @@ name := "SentimentAnalyticsTool"
 
 version := "1.0"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.11.6"
 
 //addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
 //
@@ -14,3 +14,7 @@ libraryDependencies ++= Seq(
 )
 
 addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+
+
+
+libraryDependencies += "com.lambdaworks" %% "jacks" % "2.3.3"
