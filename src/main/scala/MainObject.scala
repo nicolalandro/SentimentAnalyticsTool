@@ -12,11 +12,11 @@ import scalafxml.core.{FXMLView, NoDependencyResolver}
 object MainObject extends JFXApp {
   stage = new PrimaryStage() {
     title = "Home"
-    scene = new Scene(FXMLView(getFXMLFromJarFolder("home.fxml"), NoDependencyResolver))
+    scene = new Scene(FXMLView(_getFXMLFromJarFolder("home.fxml"), NoDependencyResolver))
   }
 //  println(getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath)
 
-  def getFXMLFromJarFolder(s: String): URL = {
+  def _getFXMLFromJarFolder(s: String): URL = {
 //    new URL("file://"+getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath + s)
     val absolutePath:String = Paths.get(getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath).toString
     val file = new File(absolutePath)

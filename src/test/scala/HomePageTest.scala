@@ -11,6 +11,7 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
 
   override protected def beforeEach(): Unit = {
     m = MainObject
+
     new Thread(new Runnable {
       override def run(): Unit = m.main(Array())
     }).start()
@@ -24,8 +25,8 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
     var jaxbMarshaller = jaxbContext.createMarshaller
     jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
     jaxbMarshaller.marshal(new SentimentIterationData, file)
-    m.stopApp()
-    m.stage.close()
+
+    //chiudere l'app
   }
 
 
