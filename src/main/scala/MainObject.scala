@@ -14,15 +14,15 @@ object MainObject extends JFXApp {
     title = "Home"
     scene = new Scene(FXMLView(getFXMLFromJarFolder("home.fxml"), NoDependencyResolver))
   }
-  println(getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath)
+//  println(getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath)
 
   def getFXMLFromJarFolder(s: String): URL = {
 //    new URL("file://"+getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath + s)
     val absolutePath:String = Paths.get(getClass.getProtectionDomain.getCodeSource.getLocation.toURI.getPath).toString
     val file = new File(absolutePath)
     val path = file.getParentFile.getAbsolutePath
-    println(absolutePath)
-    println(path)
+//    println(absolutePath)
+//    println(path)
     new URL("file://"+path+"/FXML/"+s)
   }
 }

@@ -19,8 +19,8 @@ class HomePresenter(mPieChart: PieChart) {
   var file:File = new File("data.xml")
 
   var sentimentData = readData()
-  println(sentimentData.getDailyComments.size())
-  println(sentimentData.getMoodOverview(1))
+//  println(sentimentData.getDailyComments.size())
+//  println(sentimentData.getMoodOverview(1))
 
   mPieChart.setTitle("Iteration Mood")
 
