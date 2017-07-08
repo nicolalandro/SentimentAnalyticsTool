@@ -13,10 +13,7 @@ class HomePageTest extends FlatSpec with Matchers {
       override def run(): Unit = m.main(Array())
     }).start()
 
-    var x = m.stage
-    while(x == null){
-      x = m.stage
-    }
+    Thread.sleep(4000)
 
     val label = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(0)
     val chart = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(2)
