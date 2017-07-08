@@ -16,7 +16,6 @@ class HomePageTest extends FlatSpec with Matchers {
     var x = m.stage
     while(x == null){
       x = m.stage
-      print(x)
     }
 
     val label = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(0)
