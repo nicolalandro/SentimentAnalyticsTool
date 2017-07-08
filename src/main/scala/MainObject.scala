@@ -9,7 +9,7 @@ import scalafx.scene.Scene
 import scalafxml.core.{FXMLView, NoDependencyResolver}
 
 
-object main extends JFXApp {
+object MainObject extends JFXApp {
   stage = new PrimaryStage() {
     title = "Home"
     scene = new Scene(FXMLView(getFXMLFromJarFolder("home.fxml"), NoDependencyResolver))
