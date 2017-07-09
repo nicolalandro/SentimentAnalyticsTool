@@ -1,12 +1,14 @@
 import java.awt.Robot
 import java.awt.event.InputEvent
+import javafx.application.Platform
 import javafx.collections.ObservableList
 import javafx.scene.Node
 import javafx.stage.Stage
-
 import javafx.scene.layout.HBox
 
-trait ScalaFXMatchers {
+import org.scalatest.Matchers
+
+trait ScalaFXMatchers extends Matchers{
   val bot = new Robot()
   var stage: Stage = null
 
@@ -14,7 +16,7 @@ trait ScalaFXMatchers {
     stage = s
   }
 
-  def extractNode(id: String): Node = {
+  def _extractNode(id: String): Node = {
     val nodeList = _getAllNodeList
     nodeList.forall(n => {val x = println(n.getId);true})
     val listId = nodeList.filter((n) => n.getId() != null && n.getId.equals(id))
@@ -26,7 +28,7 @@ trait ScalaFXMatchers {
   }
 
   def clickOn(id: String): Unit = {
-    clickOn(extractNode(id))
+    clickOn(_extractNode(id))
   }
 
   def clickOn(n: Node): Unit = {
@@ -51,6 +53,15 @@ trait ScalaFXMatchers {
 
   def _getListFromObservableListOfNode(list:ObservableList[Node]): List[Node] ={
     (for(i: Int <- (0 to list.size() - 1)) yield list.get(i)).toList
+  }
+
+  def matchesValInPositionOfChart(id:String, pos:Int, value:Double): Unit = {
+    val chart = _extractNode(id).asInstanceOf[javafx.scene.chart.PieChart]
+    Platform.runLater(new Runnable {
+      override def run(): Unit = {
+        chart.getData.get(pos).getPieValue should be(value)
+      }
+    })
   }
 
 }

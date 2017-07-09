@@ -35,23 +35,15 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach with S
 
 
   it should "click on mood 0" in {
-    val label: Node = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(0)
     val chart = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(2).asInstanceOf[PieChart]
 
-    val hbox = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(1).asInstanceOf[HBox]
+    clickOn("mood0")
+    clickOn("mood1")
+    clickOn("mood2")
+    clickOn("mood3")
+    clickOn("mood4")
 
-    val button0 = hbox.getChildrenUnmodifiable.get(0).asInstanceOf[Button]
-    val button1 = hbox.getChildrenUnmodifiable.get(1).asInstanceOf[Button]
-    val button2 = hbox.getChildrenUnmodifiable.get(2).asInstanceOf[Button]
-    val button3 = hbox.getChildrenUnmodifiable.get(3).asInstanceOf[Button]
-    val button4 = hbox.getChildrenUnmodifiable.get(4).asInstanceOf[Button]
-
-    clickOn(button0)
-    clickOn(button1)
-    clickOn(button2)
-    clickOn(button3)
-    clickOn(button4)
-
+    //qualcosa non va è sempre verde
     Platform.runLater(new Runnable {
       override def run(): Unit = {
         chart.getData.get(0).getPieValue should be(1.0)
