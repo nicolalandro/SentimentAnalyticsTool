@@ -1,13 +1,18 @@
+import java.awt.Robot
+import java.awt.event.InputEvent
 import java.io.File
-import javafx.scene.layout.HBox
-
-import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
+import javafx.application.Platform
+import javafx.scene.Node
 import javafx.scene.chart.PieChart
 import javafx.scene.control.Button
+import javafx.scene.layout.HBox
 import javax.xml.bind.{JAXBContext, Marshaller}
+
+import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
 class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
   var m = MainObject
+  val bot = new Robot()
 
   override protected def beforeEach(): Unit = {
     m = MainObject
@@ -20,7 +25,7 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
   }
 
   override protected def afterEach(): Unit = {
-    var file:File = new File("data.xml")
+    var file: File = new File("data.xml")
     var jaxbContext = JAXBContext.newInstance(classOf[SentimentIterationData])
     var jaxbMarshaller = jaxbContext.createMarshaller
     jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true)
@@ -42,21 +47,24 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
     val button3 = hbox.getChildrenUnmodifiable.get(3).asInstanceOf[Button]
     val button4 = hbox.getChildrenUnmodifiable.get(4).asInstanceOf[Button]
 
-    button0.fire()
-    button1.fire()
-    button2.fire()
-    button3.fire()
-    button4.fire()
+    clickOn(button0)
+    clickOn(button1)
+    clickOn(button2)
+    clickOn(button3)
+    clickOn(button4)
 
-    Thread.sleep(4000)
-
-    chart.getData.get(0).getPieValue should be(1.0)
-    chart.getData.get(1).getPieValue should be(1.0)
-    chart.getData.get(2).getPieValue should be(1.0)
-    chart.getData.get(3).getPieValue should be(1.0)
-    chart.getData.get(4).getPieValue should be(1.0)
+    Platform.runLater(new Runnable {
+      override def run(): Unit = {
+        chart.getData.get(0).getPieValue should be(1.0)
+        chart.getData.get(1).getPieValue should be(1.0)
+        chart.getData.get(2).getPieValue should be(1.0)
+        chart.getData.get(3).getPieValue should be(1.0)
+        chart.getData.get(4).getPieValue should be(1.0)
+      }
+    })
 
   }
+
 
   it should "click on mood 1" in {
     val chart = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(2).asInstanceOf[PieChart]
@@ -64,11 +72,25 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
 
     val button1 = hbox.getChildrenUnmodifiable.get(1).asInstanceOf[Button]
 
-    button1.fire()
+    clickOn(button1)
 
-    Thread.sleep(4000)
+    Platform.runLater(new Runnable {
+      override def run(): Unit = {
+        chart.getData.get(1).getPieValue should be(1.0)
+      }
+    })
+  }
 
-    chart.getData.get(1).getPieValue should be(1.0)
+  def clickOn(n: Node): Unit = {
+    val boundsLocal = n.getBoundsInLocal
+    val bounds = n.localToScreen(boundsLocal)
+
+    val x: Int = Math.ceil(bounds.getMinX + (bounds.getMaxX - bounds.getMinX) / 2).asInstanceOf[Int]
+    val y: Int = Math.ceil(bounds.getMinY + (bounds.getMaxY - bounds.getMinY) / 2).asInstanceOf[Int]
+
+    bot.mouseMove(x, y)
+    bot.mousePress(InputEvent.BUTTON1_MASK)
+    bot.mouseRelease(InputEvent.BUTTON1_MASK)
   }
 
 }
