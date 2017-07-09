@@ -19,7 +19,7 @@
       </Label>
       <HBox alignment="CENTER" layoutY="52.0" spacing="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#moodFace0">
+            <Button mnemonicParsing="false" onAction="#moodFace0" fx:id="mood0" >
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace1">
+            <Button mnemonicParsing="false" onAction="#moodFace1" fx:id="mood1" >
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace2">
+            <Button mnemonicParsing="false" onAction="#moodFace2" fx:id="mood2" >
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +46,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace3">
+            <Button mnemonicParsing="false" onAction="#moodFace3" fx:id="mood3" >
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -55,7 +55,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#moodFace4">
+            <Button mnemonicParsing="false" onAction="#moodFace4" fx:id="mood4" >
                <graphic>
                   <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>

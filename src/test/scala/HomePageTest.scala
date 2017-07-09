@@ -1,5 +1,3 @@
-import java.awt.Robot
-import java.awt.event.InputEvent
 import java.io.File
 import javafx.application.Platform
 import javafx.scene.Node
@@ -10,9 +8,8 @@ import javax.xml.bind.{JAXBContext, Marshaller}
 
 import org.scalatest.{BeforeAndAfterEach, FlatSpec, Matchers}
 
-class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
+class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach with ScalaFXMatchers {
   var m = MainObject
-  val bot = new Robot()
 
   override protected def beforeEach(): Unit = {
     m = MainObject
@@ -22,6 +19,8 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
     }).start()
 
     Thread.sleep(4000)
+
+    setStage(m.stage)
   }
 
   override protected def afterEach(): Unit = {
@@ -36,7 +35,7 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
 
 
   it should "click on mood 0" in {
-    val label = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(0)
+    val label: Node = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(0)
     val chart = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(2).asInstanceOf[PieChart]
 
     val hbox = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(1).asInstanceOf[HBox]
@@ -68,29 +67,14 @@ class HomePageTest extends FlatSpec with Matchers with BeforeAndAfterEach {
 
   it should "click on mood 1" in {
     val chart = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(2).asInstanceOf[PieChart]
-    val hbox = m.stage.getScene.getRoot.getChildrenUnmodifiable.get(1).asInstanceOf[HBox]
 
-    val button1 = hbox.getChildrenUnmodifiable.get(1).asInstanceOf[Button]
-
-    clickOn(button1)
+    clickOn("mood0")
 
     Platform.runLater(new Runnable {
       override def run(): Unit = {
         chart.getData.get(1).getPieValue should be(1.0)
       }
     })
-  }
-
-  def clickOn(n: Node): Unit = {
-    val boundsLocal = n.getBoundsInLocal
-    val bounds = n.localToScreen(boundsLocal)
-
-    val x: Int = Math.ceil(bounds.getMinX + (bounds.getMaxX - bounds.getMinX) / 2).asInstanceOf[Int]
-    val y: Int = Math.ceil(bounds.getMinY + (bounds.getMaxY - bounds.getMinY) / 2).asInstanceOf[Int]
-
-    bot.mouseMove(x, y)
-    bot.mousePress(InputEvent.BUTTON1_MASK)
-    bot.mouseRelease(InputEvent.BUTTON1_MASK)
   }
 
 }
